@@ -17,6 +17,7 @@ namespace Box.V2.Config
         public const string AuthTokenEndpointString = @"oauth2/token";
         public const string RevokeEndpointString = @"oauth2/revoke";
 
+        public const string EventsString = @"events/";
         public const string FoldersString = @"folders/";
         public const string GroupsString = @"groups/";
         public const string GroupMembershipString = @"group_memberships/";

@@ -106,6 +106,7 @@ namespace Box.V2
         private void InitManagers()
         {
             // Init Resource Managers
+            EventsManager = new BoxEventsManager(Config, _service, _converter, Auth, _asUser);
             FoldersManager = new BoxFoldersManager(Config, _service, _converter, Auth, _asUser);
             FilesManager = new BoxFilesManager(Config, _service, _converter, Auth, _asUser);
             CommentsManager = new BoxCommentsManager(Config, _service, _converter, Auth, _asUser);
@@ -135,6 +136,12 @@ namespace Box.V2
         /// The configuration parameters used by the Box Service
         /// </summary>
         public IBoxConfig Config { get; private set; }
+
+        /// <summary>
+        /// The manager that represents the events endpoint
+        /// </summary>
+        public BoxEventsManager EventsManager { get; private set;}
+
 
         /// <summary>
         /// The manager that represents the files endpoint

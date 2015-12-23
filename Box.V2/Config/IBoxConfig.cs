@@ -32,6 +32,7 @@ namespace Box.V2.Config
 
         Uri AuthCodeBaseUri { get; }
         Uri AuthCodeUri { get; }
+        Uri EventsEndpointUri { get; }
         Uri FoldersEndpointUri { get; }
         Uri FilesEndpointUri { get; }
         Uri FilesUploadEndpointUri { get; }

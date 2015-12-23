@@ -53,6 +53,7 @@
     <Compile Include="Extensions\BoxExtensions.cs" />
     <Compile Include="Managers\BoxGroupsManager.cs" />
     <Compile Include="Managers\BoxRetentionPoliciesManager.cs" />
+    <Compile Include="Managers\BoxEventsManager.cs" />
     <Compile Include="Models\BoxEnterprise.cs" />
     <Compile Include="Models\BoxExpiringEmbedLink.cs" />
     <Compile Include="Models\BoxFileLock.cs" />
