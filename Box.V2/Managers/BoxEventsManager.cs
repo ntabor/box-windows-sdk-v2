@@ -28,14 +28,18 @@ namespace Box.V2.Managers
         /// <param name="stream_position">The location in the event stream at which you want to start receiving events. Can specify special case ‘now’ to get 0 events and the latest stream position for initialization.</param>
         /// <param name="stream_type">Limits the type of events returned: all: returns everything, changes: returns tree changes, sync: returns tree changes only for sync folders</param>
         /// <param name="limit">Limits the number of events returned</param>
-        public async Task<BoxCollection<BoxItem>> GetUserEventsAsync(string stream_position = "0", string stream_type = "all", int limit = 100)
+        public async Task<BoxCollection<BoxEvent>> GetUserEventsAsync(string stream_position = "0", string stream_type = "all", int limit = 100)
         {
             stream_position.ThrowIfNullOrWhiteSpace("stream_position");
 
-            BoxRequest request = new BoxRequest(_config.EventsEndpointUri, string.Format(Constants.ItemsPathString, stream_position))
-                .Param("stream_type", stream_type.ToString());
+            //BoxRequest request = new BoxRequest(_config.EventsEndpointUri, string.Format(Constants.ItemsPathString, stream_position))
+            //    .Param("stream_type", stream_type.ToString());
+            BoxRequest request = new BoxRequest(_config.EventsEndpointUri)
+                .Param("stream_position", stream_position.ToString())
+                .Param("stream_type", stream_type.ToString())
+                .Param("limit", limit.ToString());
 
-            IBoxResponse<BoxCollection<BoxItem>> response = await ToResponseAsync<BoxCollection<BoxItem>>(request).ConfigureAwait(false);
+            IBoxResponse<BoxCollection<BoxEvent>> response = await ToResponseAsync<BoxCollection<BoxEvent>>(request).ConfigureAwait(false);
 
             return response.ResponseObject;
         }

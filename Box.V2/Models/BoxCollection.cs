@@ -13,8 +13,10 @@ namespace Box.V2.Models
         public const string FieldOffset = "offset";
         public const string FieldLimit = "limit";
         public const string FieldOrder = "order";
+        public const string FieldChunkSize = "chunk_size";
+        public const string FieldNextStreamPosition = "next_stream_position";
     }
-    
+
     /// <summary>
     /// Box representation of a collection
     /// </summary>
@@ -36,6 +38,11 @@ namespace Box.V2.Models
         [JsonProperty(PropertyName = FieldOrder)]
         public List<BoxSortOrder> Order { get; private set; }
 
+        [JsonProperty(PropertyName = FieldChunkSize)]
+        public int ChunkSize { get; private set; }
+
+        [JsonProperty(PropertyName = FieldNextStreamPosition)]
+        public string NextStreamPosition { get; private set; }
     }
 
     public class BoxCollectionSingleSortOrder<T> : BoxCollection where T : class, new()
